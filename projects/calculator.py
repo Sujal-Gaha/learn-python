@@ -5,7 +5,7 @@ def get_inputs():
     return first_num, second_num
 
 def calculator_main():
-    operator = input("Enter your operator (+, -, *, /): ")
+    operator = input("Enter your operator (+, -, *, /): ").strip()
     
     match operator:
         case "+":

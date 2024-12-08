@@ -1,4 +1,6 @@
 from projects.calculator import calculator_main
+from projects.temp_converter import temperature_converter_main
+from projects.quiz_game import quiz_game_main
 
 def print_line_divider():
         print("*" * 30)
@@ -29,18 +31,20 @@ def main_menu():
     
     print_line_divider()
         
-    project_num : int = int(input("Choose a project: ").strip())
+    project_num = input("Choose a project: ").strip()
 
     match project_num:
-        case 1:
+        case "1":
             calculator_main()
             exit_screen()
-        case 2:
-            print("Temp Converter")
-        case 3:
-            print("Quiz Game")
+        case "2":
+            temperature_converter_main()
+            exit_screen()
+        case "3":
+            quiz_game_main()
+            exit_screen()
         case _:
-            print("Invalid Number")
-            
+            print("Invalid Option!!!")
+            main_menu()
             
 main_menu()
