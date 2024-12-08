@@ -1,5 +1,5 @@
 ### List of python projects
 
-[] Calculator
-[] Temp Converter
-[] Quiz Game
+- [x] Calculator
+- [x] Temp Converter
+- [ ] Quiz Game
