@@ -1,6 +1,6 @@
 def get_inputs():
-    first_num = float(input("Enter the first number: "))
-    second_num = float(input("Enter the second number: "))
+    first_num = float(input("Enter the first number: ").strip())
+    second_num = float(input("Enter the second number: ").strip())
     
     return first_num, second_num
 
@@ -11,19 +11,19 @@ def calculator_main():
         case "+":
             first_num, second_num = get_inputs()
             result = first_num + second_num
-            print("The sum is " + str(result))
+            print(f"The sum is {result}")
         case "-":
             first_num, second_num = get_inputs()
             result = first_num - second_num
-            print("The difference is " + str(result))
+            print(f"The difference is {result}")
         case "*":
             first_num, second_num = get_inputs()
             result = first_num * second_num
-            print("The product is ", str(result))
+            print(f"The product is {result}")
         case "/":
             first_num, second_num = get_inputs()
             result = first_num / second_num
-            print("The division is ", str(result))
+            print(f"The division is {result}")
         case _:
             print("Invalid Operator!!!")
             calculator_main()

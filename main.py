@@ -1,12 +1,15 @@
+import os
 from projects.calculator import calculator_main
 from projects.temp_converter import temperature_converter_main
 from projects.quiz_game import quiz_game_main
+
+clear = lambda: os.system('clear');
 
 def print_line_divider():
         print("*" * 30)
         
 def print_formatted_title(serial_num, project_title):
-        print(str(serial_num + 1) + ": "+ str(project_title))
+        print(f"{serial_num + 1}: {project_title}")
 
 def exit_screen():
     user_input = input("Do you want to go to the main menu? (Y/n): ").strip().lower()
@@ -44,6 +47,7 @@ def main_menu():
             quiz_game_main()
             exit_screen()
         case _:
+            clear()
             print("Invalid Option!!!")
             main_menu()
             
