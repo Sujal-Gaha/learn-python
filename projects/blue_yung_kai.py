@@ -1,7 +1,7 @@
 import time
 
 first_chrorus = """
-It's stuck with you forever
+It's stuck with you forever...
 So promise you won't let it go
 I'll trust the universe will always bring me to you
 """
@@ -23,15 +23,18 @@ So let me fly with you
 
 fifth_chorus = """
 Will you
-be forever
+be forever....
 with me?
 """
 
-def time_sleep(sec):
-    time.sleep(sec)
+def time_sleep(delay):
+    time.sleep(delay)
+
+def print_char(char):
+    print(char, end="", flush=True)
 
 for char in first_chrorus:
-    print(char, end="", flush=True) 
+    print_char(char) 
     time_sleep(0.08 if char != " " else 0.1)  
 
     if char == "\n":
@@ -40,7 +43,7 @@ for char in first_chrorus:
 time_sleep(2.0)
 
 for char in second_chorus:
-    print(char, end="", flush=True)
+    print_char(char)
     time_sleep(0.07 if char != " " else 0.1)  
 
     if char == "\n":
@@ -49,7 +52,7 @@ for char in second_chorus:
 time_sleep(0.35)
 
 for char in third_chorus:
-    print(char, end="", flush=True)
+    print_char(char)
     time_sleep(0.06 if char != " " else 0.1)  
 
     if char == "\n":
@@ -58,7 +61,7 @@ for char in third_chorus:
 time_sleep(0.4)
 
 for char in fourth_chorus:
-    print(char, end="", flush=True)
+    print_char(char)
     time_sleep(0.09 if char != " " else 0.1) 
 
     if char == "\n":
@@ -67,10 +70,34 @@ for char in fourth_chorus:
 time_sleep(0.5)
 
 for char in fifth_chorus:
-    print(char, end="", flush=True)
+    print_char(char)
     time_sleep(0.1 if char != " " else 0.2) 
 
     if char == "\n":
-        time_sleep(0.5)
+        time_sleep(0.55)
 
 print() 
+print()
+
+heart = [
+    "   *****     *****   ",
+    " **     ** **     ** ",
+    "**       ***       **",
+    " **                **",
+    "  **              ** ",
+    "   **            **  ",
+    "    **          **   ",
+    "     **        **    ",
+    "      **      **     ",
+    "       **    **      ",
+    "         ****        "
+]
+
+for line in heart:
+    print(line, flush=True)
+    time_sleep(0.05)
+
+
+print() 
+print()
+
