@@ -2,6 +2,7 @@ import os
 from projects.calculator import calculator_main
 from projects.temp_converter import temperature_converter_main
 from projects.quiz_game import quiz_game_main
+from projects.snake_game import snake_game
 
 clear = lambda: os.system('clear');
 
@@ -24,7 +25,7 @@ def exit_screen():
         exit_screen()
 
 def main_menu():
-    projects = ["Calculator", "Temp Converter", "Quiz Game"]
+    projects = ["Calculator", "Temp Converter", "Quiz Game", "Snake Game"]
 
     print("List of Projects")
     print_line_divider()
@@ -45,6 +46,9 @@ def main_menu():
             exit_screen()
         case "3":
             quiz_game_main()
+            exit_screen()
+        case "4":
+            snake_game()
             exit_screen()
         case _:
             clear()
