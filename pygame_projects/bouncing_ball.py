@@ -1,12 +1,13 @@
 import pygame
 
 # Constants
-WIDTH, HEIGHT = 1000, 700
+HEIGHT, WIDTH = 700, 1000
 BLUE = "#0000FF"
 WHITE = "#FFFFFF"
 BALL_RADIUS = 30
 BALL_INITIAL_VELOCITY = 0
 GRAVITY = 0.3
+BOUNCE_DAMPING = 0.8 # Set to 0.8 means that the ball conserves 80% of its energy
 FPS = 60
 
 pygame.init()
@@ -26,6 +27,15 @@ class Ball:
     def update(self):
         self.y += self.velocity
         self.velocity += self.acceleration
+
+        print(f"{self.y}, {self.radius}, {self.velocity}, {self.acceleration}, {HEIGHT}")
+
+        if (self.y + self.radius) >= HEIGHT:
+            self.y = HEIGHT - self.radius
+            self.velocity = -self.velocity * BOUNCE_DAMPING
+
+            if abs(self.velocity) < 2:
+                self.velocity = 0
 
     def draw(self):
         pygame.draw.circle(screen, BLUE, (self.x, self.y), self.radius, 0)
