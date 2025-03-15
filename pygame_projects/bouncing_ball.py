@@ -4,14 +4,23 @@ import math
 
 # Constants
 HEIGHT, WIDTH = 700, 1000
-RED,GREEN, BLUE = "#FF0000", "#00FF00", "#0000FF"
+FPS = 60
+
+# Colors
 WHITE = "#FFFFFF"
+BLACK = "#000000"
+
+RED, GREEN, BLUE = "#FF0000", "#00FF00", "#0000FF" # RGB
+YELLOW, CYAN, MAGENTA = "#FFFF00", "#00FFFF", "#FF00FF"
+ORANGE= "#FF7F00"
+
+# Balls Config
+
 BALL_RADIUS = 30
 BALL_INITIAL_VELOCITY = 0
 GRAVITY = 0.3
 BOUNCE_DAMPING = 0.9 # Set to 0.8 means that the ball conserves 80% of its energy
-FPS = 60
-BALL_COUNT = 2
+BALL_COUNT = 20
 
 pygame.init()
 
@@ -27,7 +36,7 @@ class Ball:
         self.velocity_x = random.uniform(-6, 6)
         self.acceleration = GRAVITY
         self.radius = BALL_RADIUS
-        self.color = random.choice([RED, GREEN, BLUE])
+        self.color = random.choice([RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, ORANGE])
 
     def check_collision(self, other_balls):
         for other_ball in other_balls:
@@ -40,7 +49,7 @@ class Ball:
             print(f"${distance_betn_radii}, ${sum_of_radii}")
 
             if distance_betn_radii <= sum_of_radii:
-                raise Exception("Collision")
+                pass
 
     def update(self, balls):
         self.h += self.velocity_x
@@ -68,8 +77,7 @@ class Ball:
             self.h = self.radius
             self.velocity_x = abs(self.velocity_x)
 
-        for ball in balls:
-            ball.check_collision(balls)
+        self.check_collision(balls)
 
     def draw(self):
         pygame.draw.circle(screen, self.color, (self.h, self.k), self.radius, 0)
