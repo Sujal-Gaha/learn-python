@@ -8,9 +8,9 @@ WHITE = "#FFFFFF"
 BALL_RADIUS = 30
 BALL_INITIAL_VELOCITY = 0
 GRAVITY = 0.3
-BOUNCE_DAMPING = 0.8 # Set to 0.8 means that the ball conserves 80% of its energy
+BOUNCE_DAMPING = 1.1 # Set to 0.8 means that the ball conserves 80% of its energy
 FPS = 60
-BALL_COUNT = 20
+BALL_COUNT = 10
 
 pygame.init()
 
@@ -19,34 +19,41 @@ pygame.display.set_caption('Bouncing Ball Simulation')
 clock = pygame.time.Clock()
 
 class Ball:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def __init__(self, h, k):
+        self.h = h
+        self.k = k
         self.velocity = BALL_INITIAL_VELOCITY
         self.acceleration = GRAVITY
         self.radius = BALL_RADIUS
         self.color = random.choice([RED, GREEN, BLUE])
+    
+    def check_collission(self):
+        pass
 
     def update(self):
-        self.y += self.velocity
+        self.k += self.velocity
         self.velocity += self.acceleration
 
-        print(f"{self.y}, {self.radius}, {self.velocity}, {self.acceleration}, {HEIGHT}")
+        print(f"{self.k}, {self.radius}, {self.velocity}, {self.acceleration}, {HEIGHT}")
 
-        if (self.y + self.radius) >= HEIGHT:
-            self.y = HEIGHT - self.radius
+        if (self.k + self.radius) >= HEIGHT:
+            self.k = HEIGHT - self.radius
             self.velocity = -self.velocity * BOUNCE_DAMPING
 
             if abs(self.velocity) < 2:
                 self.velocity = 0
 
+        if (self.k + self.radius) <= 0:
+            self.k += self.radius
+            self.velocity = abs(self.velocity)
+
     def draw(self):
-        pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius, 0)
+        pygame.draw.circle(screen, self.color, (self.h, self.k), self.radius, 0)
         
 balls = [
      Ball(
-        x=random.randint(100, WIDTH - 100),
-        y=random.randint(100, HEIGHT // 2)
+        h=random.randint(100, WIDTH - 100),
+        k=random.randint(100, HEIGHT // 2)
     ) 
     for _ in range(BALL_COUNT)
 ]
